@@ -252,6 +252,41 @@ body::after {
   margin-bottom: 2rem;
 }
 
+/* Image container and animation */
+.hero-image-container {
+  margin-bottom: 1.5rem;
+  perspective: 1000px;
+}
+.hero-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--border-h);
+  box-shadow: 0 0 30px rgba(148, 164, 220, 0.4);
+}
+.image-flip {
+  animation: image-flip 8s infinite ease-in-out;
+}
+@keyframes image-flip {
+  0%, 20% { transform: rotateY(0deg); }
+  40%, 60% { transform: rotateY(180deg); }
+  80%, 100% { transform: rotateY(360deg); }
+}
+
+/* Brush font for name */
+.hero-name-brush {
+  font-family: var(--font-brush), cursive;
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #ECEDF8;
+  text-shadow: 2px 4px 10px rgba(148, 164, 220, 0.3);
+  margin-bottom: 1.5rem;
+  transform: rotate(-2deg);
+  animation: float 6s ease-in-out infinite;
+}
+
 /* Specialty row */
 .specialty {
   font-family: var(--font-body);

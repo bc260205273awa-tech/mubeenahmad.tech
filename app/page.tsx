@@ -118,9 +118,15 @@ export default function Page() {
           <span className="eyebrow-line r" />
         </div>
 
+        {/* The central image with flip animation */}
+        <div className="hero-image-container fade-up d3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/favicon.webp" alt="Mubeen Ahmad" className="hero-image image-flip" />
+        </div>
+
         {/* The name — the star of the show */}
-        <h1 className="hero-name fade-up d3">
-          Mubeen<br />Ahmad
+        <h1 className="hero-name-brush fade-up d4">
+          Mubeen Ahmad
         </h1>
 
         {/* Specialty */}

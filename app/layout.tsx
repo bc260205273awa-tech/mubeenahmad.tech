@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, Outfit } from 'next/font/google'
+import { Cormorant_Garamond, Outfit, Permanent_Marker } from 'next/font/google'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -14,6 +14,13 @@ const outfit = Outfit({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500'],
   variable: '--font-outfit',
+  display: 'swap',
+})
+
+const permanentMarker = Permanent_Marker({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-brush',
   display: 'swap',
 })
 
@@ -35,6 +42,9 @@ export const metadata: Metadata = {
   creator: 'Mubeen Ahmad',
   metadataBase: new URL('https://mubeenahmad.tech'),
   alternates: { canonical: 'https://mubeenahmad.tech' },
+  icons: {
+    icon: '/favicon.webp',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -74,7 +84,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${outfit.variable} ${permanentMarker.variable}`}>
       <body>{children}</body>
     </html>
   )
