@@ -59,8 +59,8 @@ body::after {
 }
 
 @keyframes breathe {
-  0%, 100% { opacity: 0.55; transform: scale(1); }
-  50%       { opacity: 0.75; transform: scale(1.06); }
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50%       { opacity: 0.90; transform: scale(1.1); }
 }
 
 @keyframes pulse-dot {
@@ -78,6 +78,16 @@ body::after {
   45%  { transform: translateY(-100%); opacity: 0; }
   50%  { transform: translateY(100%); opacity: 0; }
   95%, 100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { text-shadow: 0 0 10px rgba(148, 164, 220, 0.2), 0 0 20px rgba(148, 164, 220, 0.1); }
+  50%      { text-shadow: 0 0 20px rgba(148, 164, 220, 0.4), 0 0 30px rgba(148, 164, 220, 0.2); }
 }
 
 /* ─── ANIMATION UTILITIES ────────────────────────────────── */
@@ -171,6 +181,15 @@ body::after {
   border-radius: 100px;
   padding: 0.4rem 1rem;
   backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.badge:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-h);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74, 222, 128, 0.15);
+  color: var(--text-1);
 }
 .badge-dot {
   width: 6px; height: 6px;
@@ -213,7 +232,7 @@ body::after {
 /* The hero name */
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 13vw, 13rem);
+  font-size: clamp(5rem, 15vw, 15rem);
   font-weight: 300;
   line-height: 0.88;
   letter-spacing: -0.025em;
@@ -229,8 +248,8 @@ body::after {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: shimmer 8s ease infinite;
-  margin-bottom: 1.75rem;
+  animation: shimmer 8s ease infinite, float 6s ease-in-out infinite, glow-pulse 4s ease-in-out infinite;
+  margin-bottom: 2rem;
 }
 
 /* Specialty row */
@@ -273,12 +292,13 @@ body::after {
 /* Coming soon tagline */
 .tagline {
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
   font-weight: 300;
   font-style: italic;
   color: var(--text-2);
-  letter-spacing: 0.02em;
-  margin-bottom: 2.25rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 3rem;
+  animation: float 8s ease-in-out infinite reverse;
 }
 
 /* ─── COUNTDOWN ──────────────────────────────────────────── */
@@ -314,7 +334,7 @@ body::after {
 
 .cd-value {
   font-family: var(--font-display);
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 300;
   color: var(--text-1);
   line-height: 1;
