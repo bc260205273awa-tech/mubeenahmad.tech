@@ -147,7 +147,7 @@ export function SelectedWork({ className }: SelectedWorkProps) {
               {moreProjects.map((item: Project) => (
                 <div
                   key={item.slug}
-                  className="group grid grid-cols-1 gap-3 sm:grid-cols-12 sm:items-center py-6 border-b border-hairline transition-colors duration-200 hover:bg-surface/40 px-2 sm:px-4"
+                  className="group grid grid-cols-1 gap-2.5 sm:grid-cols-12 sm:items-center py-5 sm:py-6 border-b border-hairline transition-colors duration-200 hover:bg-surface/40 px-2 sm:px-4"
                 >
                   {/* Title & Category */}
                   <div className="sm:col-span-5">
@@ -163,23 +163,24 @@ export function SelectedWork({ className }: SelectedWorkProps) {
                   </div>
 
                   {/* Stack */}
-                  <div className="sm:col-span-4 font-mono text-[11px] text-muted">
+                  <div className="sm:col-span-4 font-mono text-[11px] text-muted leading-relaxed">
                     {item.stack.join(' · ')}
                   </div>
 
-                  {/* Year */}
-                  <div className="sm:col-span-1 font-mono text-mono-xs text-muted">
-                    {item.year}
-                  </div>
+                  {/* Mobile flex grouping for Year & Action */}
+                  <div className="flex items-center justify-between sm:contents pt-1 sm:pt-0">
+                    <div className="sm:col-span-1 font-mono text-mono-xs text-muted">
+                      {item.year}
+                    </div>
 
-                  {/* Action Link */}
-                  <div className="sm:col-span-2 sm:text-right">
-                    <Link
-                      href={`/work/${item.slug}`}
-                      className="font-mono text-mono-xs text-ink uppercase tracking-wider editorial-link hover:text-accent focus-visible:outline-accent"
-                    >
-                      Case study &rarr;
-                    </Link>
+                    <div className="sm:col-span-2 sm:text-right">
+                      <Link
+                        href={`/work/${item.slug}`}
+                        className="font-mono text-mono-xs text-ink uppercase tracking-wider editorial-link hover:text-accent focus-visible:outline-accent py-1 inline-block"
+                      >
+                        Case study &rarr;
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}

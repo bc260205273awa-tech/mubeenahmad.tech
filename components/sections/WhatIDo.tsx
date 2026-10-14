@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Container } from '@/components/ui/Container'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { profile } from '@/content/profile'
@@ -12,6 +12,11 @@ interface WhatIDoProps {
 
 export function WhatIDo({ className }: WhatIDoProps) {
   const { services } = profile
+  const [activeService, setActiveService] = useState<string | null>(null)
+
+  const toggleService = (index: string) => {
+    setActiveService((prev) => (prev === index ? null : index))
+  }
 
   return (
     <section
@@ -58,7 +63,18 @@ export function WhatIDo({ className }: WhatIDoProps) {
               <article
                 key={service.index}
                 tabIndex={0}
-                className="group py-8 sm:py-10 transition-colors duration-250 hover:bg-surface/60 focus-visible:bg-surface/60 -mx-4 sm:-mx-6 px-4 sm:px-6 outline-none cursor-default"
+                onClick={() => toggleService(service.index)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    toggleService(service.index)
+                  }
+                }}
+                className={cn(
+                  'group py-7 sm:py-9 transition-colors duration-250 hover:bg-surface/60 focus-visible:bg-surface/60 -mx-4 sm:-mx-6 px-4 sm:px-6 outline-none cursor-pointer',
+                  activeService === service.index && 'bg-surface/60'
+                )}
+                aria-expanded={activeService === service.index}
               >
                 <div className="flex flex-col gap-3">
                   {/* Row Header: Mono Number + Serif Title */}
@@ -83,8 +99,15 @@ export function WhatIDo({ className }: WhatIDoProps) {
                     </span>
                   </div>
 
-                  {/* Expandable Example from Real Work on Hover / Focus */}
-                  <div className="sm:pl-9 grid grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out">
+                  {/* Expandable Example from Real Work on Tap / Hover / Focus */}
+                  <div
+                    className={cn(
+                      'sm:pl-9 grid transition-[grid-template-rows] duration-300 ease-out',
+                      activeService === service.index
+                        ? 'grid-rows-[1fr]'
+                        : 'grid-rows-[0fr] group-hover:grid-rows-[1fr] group-focus-visible:grid-rows-[1fr]'
+                    )}
+                  >
                     <div className="overflow-hidden">
                       <div className="pt-4 mt-3 border-t border-hairline/70 flex flex-col sm:flex-row sm:items-baseline gap-2">
                         <span className="font-mono text-mono-xs text-accent uppercase tracking-wider shrink-0">

@@ -24,11 +24,11 @@ const config: Config = {
         mono: ['var(--font-geist-mono)', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       fontSize: {
-        // Fluid type scale with clamp(); hero headline up to ~9vw
-        'display-hero': ['clamp(3.5rem, 9vw, 8.5rem)', { lineHeight: '0.95', letterSpacing: '-0.035em' }],
-        'display-1': ['clamp(2.75rem, 6vw, 5.75rem)', { lineHeight: '0.98', letterSpacing: '-0.03em' }],
-        'display-2': ['clamp(2.125rem, 4.2vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
-        'display-3': ['clamp(1.625rem, 2.8vw, 2.5rem)', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
+        // Fluid type scale with clamp(); mobile floor at 320px up to ~9vw on ultra-wide
+        'display-hero': ['clamp(2.5rem, 8.5vw, 8.5rem)', { lineHeight: '0.95', letterSpacing: '-0.035em' }],
+        'display-1': ['clamp(2.25rem, 5.5vw, 5.75rem)', { lineHeight: '0.98', letterSpacing: '-0.03em' }],
+        'display-2': ['clamp(1.75rem, 4vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
+        'display-3': ['clamp(1.35rem, 2.6vw, 2.5rem)', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
         'editorial-sub': ['clamp(1.125rem, 1.8vw, 1.5rem)', { lineHeight: '1.35', letterSpacing: '-0.015em' }],
         'body-lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '-0.01em' }],
         'body-md': ['1rem', { lineHeight: '1.6', letterSpacing: '-0.005em' }],

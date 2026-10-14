@@ -33,9 +33,9 @@ export function Button({
   }
 
   const sizeStyles = {
-    sm: 'px-3 py-1.5 text-mono-xs',
-    md: 'px-5 py-2.5 text-mono-xs',
-    lg: 'px-6 py-3.5 text-body-sm font-mono',
+    sm: 'px-3 py-1.5 min-h-[36px] text-mono-xs',
+    md: 'px-5 py-2.5 min-h-[44px] text-mono-xs',
+    lg: 'px-6 py-3.5 min-h-[48px] text-body-sm font-mono',
   }
 
   const combinedClasses = cn(

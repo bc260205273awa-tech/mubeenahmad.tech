@@ -211,7 +211,7 @@ export function Contact({ className }: ContactProps) {
                     type="button"
                     onClick={() => setSelectedCv(opt.id)}
                     className={cn(
-                      'font-mono text-mono-xs uppercase tracking-wider px-3 py-1.5 border transition-colors duration-150 cursor-pointer',
+                      'font-mono text-mono-xs uppercase tracking-wider px-3.5 py-2 min-h-[38px] border transition-colors duration-150 cursor-pointer flex items-center justify-center',
                       selectedCv === opt.id
                         ? 'border-accent text-accent bg-accent/5'
                         : 'border-hairline text-muted hover:text-ink hover:border-ink/30'
@@ -226,7 +226,7 @@ export function Contact({ className }: ContactProps) {
               <a
                 href={activeCvOption.file}
                 download
-                className="inline-flex items-center gap-2 font-mono text-mono-xs uppercase tracking-wider text-ink hover:text-accent border border-hairline hover:border-ink/40 bg-surface px-4 py-2.5 transition-colors duration-250"
+                className="inline-flex items-center gap-2 font-mono text-mono-xs uppercase tracking-wider text-ink hover:text-accent border border-hairline hover:border-ink/40 bg-surface px-4 py-3 min-h-[44px] transition-colors duration-250 w-full sm:w-auto justify-center sm:justify-start"
               >
                 <span>Download {activeCvOption.label} CV (PDF)</span>
                 <span>&darr;</span>
@@ -235,7 +235,7 @@ export function Contact({ className }: ContactProps) {
           </div>
 
           {/* ─── RIGHT COLUMN: MINIMAL CONTACT FORM ─────────────────────── */}
-          <div className="lg:col-span-6 border border-hairline bg-surface p-8 sm:p-10">
+          <div className="lg:col-span-6 border border-hairline bg-surface p-5 sm:p-8 lg:p-10">
             <span className="font-mono text-mono-xs text-muted uppercase tracking-widest block mb-6">
               Direct Transmission Form
             </span>

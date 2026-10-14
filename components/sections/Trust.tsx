@@ -35,7 +35,7 @@ export function Trust({ className }: TrustProps) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-hairline border-y border-hairline">
           {trust.organizations.map((org, idx) => {
             const Content = (
-              <div className="group flex flex-col justify-between p-6 sm:p-7 transition-colors duration-200">
+              <div className="group flex flex-col justify-between p-5 sm:p-7 transition-colors duration-200">
                 <div className="min-h-[3.25rem] flex items-center">
                   <span className="font-serif text-xl sm:text-2xl text-muted group-hover:text-ink transition-colors duration-200 font-normal tracking-tight editorial-link">
                     {org.name}

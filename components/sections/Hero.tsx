@@ -166,7 +166,7 @@ export function Hero({ showPortrait = true, className }: HeroProps) {
 
         {/* ─── GIANT SERIF HEADLINE WITH ITALLIC ACCENT WORD ─────────── */}
         <div className="my-auto py-4 sm:py-6 lg:py-8">
-          <h1 className="font-serif text-display-hero text-ink font-normal">
+          <h1 className="font-serif text-display-hero text-ink font-normal break-words sm:break-normal">
             {/* Line 1 */}
             <span className="block overflow-hidden py-0.5">
               <span

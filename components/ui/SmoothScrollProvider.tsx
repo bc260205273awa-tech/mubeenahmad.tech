@@ -21,6 +21,12 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
 
     gsap.registerPlugin(ScrollTrigger)
 
+    // Touch devices (iOS Safari, Android Chrome) get 100% native 120Hz momentum physics
+    const isTouchOnly = window.matchMedia('(pointer: coarse) and (hover: none)').matches
+    if (isTouchOnly) {
+      return
+    }
+
     const lenis = new Lenis({
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

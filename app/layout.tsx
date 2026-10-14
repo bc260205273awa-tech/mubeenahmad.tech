@@ -59,6 +59,7 @@ export const viewport: Viewport = {
   ],
   width: 'device-width',
   initialScale: 1,
+  viewportFit: 'cover',
 }
 
 const personSchema = {
@@ -71,8 +72,8 @@ const personSchema = {
   image: 'https://mubeenahmad.tech/mubeen.webp',
   sameAs: [
     'https://mrdevs.dev',
-    'https://github.com/TODO_REAL_VALUE',
-    'https://linkedin.com/in/TODO_REAL_VALUE',
+    'https://github.com/mubeenahmad',
+    'https://linkedin.com/in/mubeen-ahmad-03706031b',
   ],
   address: {
     '@type': 'PostalAddress',

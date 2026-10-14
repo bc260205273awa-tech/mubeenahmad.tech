@@ -165,7 +165,7 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center gap-4">
+          <div className="flex md:hidden items-center gap-3">
             <ThemeToggle />
             <button
               ref={openButtonRef}
@@ -174,7 +174,7 @@ export function Navigation() {
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
               aria-label="Open Navigation Menu"
-              className="font-mono text-mono-xs uppercase tracking-widest text-ink border border-hairline bg-surface px-3 py-1.5 hover:border-ink focus-visible:outline-accent"
+              className="font-mono text-mono-xs uppercase tracking-widest text-ink border border-hairline bg-surface px-3.5 py-2 min-h-[44px] flex items-center justify-center hover:border-ink focus-visible:outline-accent active:bg-ink active:text-bg transition-colors"
             >
               Menu
             </button>
@@ -190,7 +190,7 @@ export function Navigation() {
         aria-modal="true"
         aria-label="Mobile Navigation"
         className={cn(
-          'fixed inset-0 z-50 flex flex-col justify-between bg-bg p-6 sm:p-10 transition-opacity duration-300 md:hidden',
+          'fixed inset-0 z-50 flex flex-col justify-between bg-bg p-6 sm:p-10 pt-safe pb-safe transition-opacity duration-300 md:hidden overflow-y-auto',
           menuOpen
             ? 'opacity-100 pointer-events-auto'
             : 'opacity-0 pointer-events-none'
@@ -206,7 +206,7 @@ export function Navigation() {
             type="button"
             onClick={() => setMenuOpen(false)}
             aria-label="Close Navigation Menu"
-            className="font-mono text-mono-xs uppercase tracking-widest text-ink border border-hairline bg-surface px-3.5 py-1.5 hover:border-ink focus-visible:outline-accent"
+            className="font-mono text-mono-xs uppercase tracking-widest text-ink border border-hairline bg-surface px-4 py-2 min-h-[44px] flex items-center justify-center hover:border-ink focus-visible:outline-accent active:bg-ink active:text-bg transition-colors"
           >
             Close
           </button>
@@ -215,19 +215,19 @@ export function Navigation() {
         {/* Large Serif Links with staggered numbers */}
         <nav
           aria-label="Mobile Navigation Links"
-          className="my-auto flex flex-col gap-6 py-8"
+          className="my-auto flex flex-col gap-5 py-6 sm:py-8"
         >
-          {NAV_LINKS.map((link, idx) => (
+          {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={handleLinkClick}
-              className="group flex items-baseline gap-4 text-ink focus-visible:outline-accent"
+              className="group flex items-baseline gap-4 text-ink focus-visible:outline-accent min-h-[48px] py-1"
             >
               <span className="font-mono text-mono-xs text-muted">
                 ({link.number})
               </span>
-              <span className="font-serif text-4xl sm:text-5xl tracking-tight group-hover:text-accent transition-colors duration-200">
+              <span className="font-serif text-[clamp(2rem,8vw,3.25rem)] tracking-tight group-hover:text-accent transition-colors duration-200">
                 {link.label}
               </span>
             </a>
