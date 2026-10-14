@@ -1,91 +1,159 @@
-import type { Metadata } from 'next'
-import { Cormorant_Garamond, Outfit, Permanent_Marker } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Instrument_Serif } from 'next/font/google'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import './globals.css'
+import { ThemeProvider } from '@/components/ui/ThemeProvider'
+import { SmoothScrollProvider } from '@/components/ui/SmoothScrollProvider'
 
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['300', '400', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-  display: 'swap',
-})
-
-const outfit = Outfit({
-  subsets: ['latin'],
-  weight: ['200', '300', '400', '500'],
-  variable: '--font-outfit',
-  display: 'swap',
-})
-
-const permanentMarker = Permanent_Marker({
+const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
   weight: ['400'],
-  variable: '--font-brush',
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Mubeen Ahmad — Fullstack Web Developer',
+  title: 'Mubeen Ahmad — Full-Stack Engineer & Agency Co-Founder',
   description:
-    'Fullstack web developer specializing in healthcare technology, AI-powered applications, and premium digital experiences. Based in Pakistan, serving clients worldwide.',
-  keywords: [
-    'Mubeen Ahmad',
-    'Fullstack Developer',
-    'Web Developer Pakistan',
-    'Healthcare Web Development',
-    'Next.js Developer',
-    'React Developer',
-    'AI Web Applications',
-    'mubeenahmad.tech',
-  ],
+    'Editorial portfolio of Mubeen Ahmad (mubeenahmad.tech). High-load institutional ERP engineering, managed backends, and bespoke digital software.',
+  metadataBase: new URL('https://mubeenahmad.tech'),
   authors: [{ name: 'Mubeen Ahmad', url: 'https://mubeenahmad.tech' }],
   creator: 'Mubeen Ahmad',
-  metadataBase: new URL('https://mubeenahmad.tech'),
-  alternates: { canonical: 'https://mubeenahmad.tech' },
-  icons: {
-    icon: '/favicon.webp',
+  keywords: [
+    'Mubeen Ahmad',
+    'Full-Stack Developer',
+    'Software Engineer',
+    'ERP Systems',
+    'Next.js',
+    'React',
+    'Vehari Pakistan',
+    'MR DEVS',
+    'mubeenahmad.tech',
+  ],
+  alternates: {
+    canonical: 'https://mubeenahmad.tech',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://mubeenahmad.tech',
-    title: 'Mubeen Ahmad — Fullstack Web Developer',
+    title: 'Mubeen Ahmad — Full-Stack Engineer & Agency Co-Founder',
     description:
-      'Fullstack web developer specializing in healthcare tech, AI-powered applications, and premium digital experiences.',
+      'High-load institutional ERP engineering, managed backends, and bespoke digital software.',
     siteName: 'Mubeen Ahmad',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Mubeen Ahmad — Fullstack Web Developer',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mubeen Ahmad — Fullstack Web Developer',
+    title: 'Mubeen Ahmad — Full-Stack Engineer',
     description:
-      'Fullstack web developer specializing in healthcare tech, AI-powered applications.',
-    images: ['/og-image.png'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+      'High-load institutional ERP engineering, managed backends, and bespoke digital software.',
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#EFEBE3' },
+    { media: '(prefers-color-scheme: dark)', color: '#12110F' },
+  ],
+  width: 'device-width',
+  initialScale: 1,
+}
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Mubeen Ahmad',
+  jobTitle: 'Full-Stack Developer & Systems Builder',
+  url: 'https://mubeenahmad.tech',
+  email: 'mailto:mubeenahma1123@gmail.com',
+  image: 'https://mubeenahmad.tech/mubeen.webp',
+  sameAs: [
+    'https://mrdevs.dev',
+    'https://github.com/TODO_REAL_VALUE',
+    'https://linkedin.com/in/TODO_REAL_VALUE',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Vehari',
+    addressRegion: 'Punjab',
+    addressCountry: 'Pakistan',
+  },
+  worksFor: {
+    '@type': 'Organization',
+    name: 'MR DEVS',
+    url: 'https://mrdevs.dev',
+  },
+  knowsAbout: [
+    'Full-Stack Web Development',
+    'Enterprise ERP Platforms',
+    'Role-Based Access Control',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Firebase',
+    'Supabase',
+    'AI LLM Tool-Calling',
+    'Node.js',
+  ],
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${outfit.variable} ${permanentMarker.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${instrumentSerif.variable} ${GeistSans.variable} ${GeistMono.variable}`}
+    >
+      <head>
+        {/* Anti-FOUC script: Synchronously apply dark/light class before DOM paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('theme');
+                  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  if (stored === 'dark' || (!stored && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+
+        {/* JSON-LD Person Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema),
+          }}
+        />
+      </head>
+      <body className="min-h-screen bg-bg text-ink antialiased selection:bg-accent selection:text-white">
+        {/* Accessible Skip Link */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-ink focus:text-bg focus:font-mono focus:text-mono-xs focus:uppercase focus:tracking-wider focus:outline-none focus:ring-2 focus:ring-accent"
+        >
+          Skip to main content
+        </a>
+
+        <ThemeProvider>
+          <SmoothScrollProvider>
+            {children}
+          </SmoothScrollProvider>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
+
